@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<intances>
+<instance name="myclass">io.github.nakshay.test.MyClass</instance>
+<instance name="yourClass">io.github.nakshay.YourClass</instance>
+</intances>
