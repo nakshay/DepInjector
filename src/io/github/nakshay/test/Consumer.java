@@ -6,7 +6,7 @@ import io.github.nakshay.depinjector.Injector;
 class Consumer  {
     public static void main(String ar[])  throws Exception{
 
-        Injector injector = new DepInjector("resources\\config.xml");
+        Injector injector = new DepInjector("resources/config.xml");
 
         MyClass instance= (MyClass)injector.inject("myclass");
 
