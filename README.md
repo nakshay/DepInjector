@@ -1,6 +1,7 @@
 # DepInjector
-Simple Framework of Dependency Injection System in Java.
-This framework is inspired from Spring core framework https://github.com/spring-projects/spring-framework
+:fire:Simple dependency injection framework in java :fire:
+
+This framework is inspired from Spring core framework https://github.com/spring-projects/spring-framework and uses Java Reflection API.
 
 
 work in progress! 
@@ -11,6 +12,7 @@ API may change in future.
 # What is working?
 
 1.Creating instance via Injector#inject('id'), fully qualified class name must be present in config file 
+
 2. direct instantiating members via @Inject annotation
 
 
@@ -36,8 +38,13 @@ here id must be equal to ClassName (case sensitve), assigning short id is work i
 
 `injector.inject("myclass", MyClass.class);`
 
+
+# Dependencies 
+
+https://github.com/ronmamo/reflections
+ 
  
      
-#Pull request is appreciated   
+P.S. Pull request is appreciated  
 
 
