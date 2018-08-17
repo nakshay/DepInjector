@@ -1,5 +1,5 @@
 # DepInjector
-Simple Dependency Injection System in Java
+Simple Framework of Dependency Injection System in Java
 
 work in progress! 
 
