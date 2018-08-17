@@ -4,7 +4,6 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -16,6 +15,20 @@ import io.github.nakshay.depinjector.annotations.Instance;
 final public class AnnotationProcessor {
 
 	void processAnnotaion(Map<String, Object> map) {
+
+		Reflections reflections = prepareReflection();
+		Set<Class<?>> classNames = reflections.getTypesAnnotatedWith(Instance.class);
+
+		for (Class<?> cls : classNames) {
+			String name = cls.toString();
+			name = name.substring(name.indexOf(' ') + 1, name.length());
+			map.put(name.substring(name.lastIndexOf('.') + 1, name.length()), name);
+
+		}
+
+	}
+
+	private Reflections prepareReflection() {
 
 		ArrayList<URL> urls = new ArrayList<URL>();
 		ClassLoader[] classloaders = { getClass().getClassLoader(), Thread.currentThread().getContextClassLoader() };
@@ -31,21 +44,7 @@ final public class AnnotationProcessor {
 		ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
 		configurationBuilder.setUrls(urls);
 
-		Reflections reflections = new Reflections(configurationBuilder);
-
-		Set<Class<?>> classNames = reflections.getTypesAnnotatedWith(Instance.class);
-
-		for (Class<?> cls : classNames) {
-			String name = cls.toString();
-			name = name.substring(name.indexOf(' ') + 1, name.length());
-			map.put(name.substring(name.lastIndexOf('.') + 1, name.length()), name);
-
-		}
-
-		Iterator it = map.entrySet().iterator();
-		while (it.hasNext()) {
-			System.out.println(it.next());
-		}
+		return new Reflections(configurationBuilder);
 	}
 
 }
