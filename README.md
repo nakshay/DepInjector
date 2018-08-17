@@ -11,7 +11,7 @@ API may change in future.
 
 # What is working?
 
-1. Creating instance via Injector#inject('id'), fully qualified class name must be present in config file 
+* Creating instance via Injector#inject('id'), fully qualified class name must be present in config file 
 
 Ex.
 
@@ -20,7 +20,7 @@ Ex.
 `MyClass instance= (MyClass)injector.inject("myclass");`
 
 
-2. Creating instance by using @Instance Annotation and getting the object via  Injector#inject('id'),
+* Creating instance by using @Instance Annotation and getting the object via  Injector#inject('id'),
 here id must be equal to ClassName (case sensitve), assigning short id is work in progress 
  
 Ex.
@@ -30,7 +30,7 @@ Ex.
 `inst.printMessage();`
 
 
-3. Object instantiation via Annotation 
+* Object instantiation via Annotation 
 
 Ex.
 
