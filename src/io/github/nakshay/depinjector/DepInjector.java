@@ -6,19 +6,19 @@ public final class DepInjector implements Injector {
 
 	HashMap<String, Object> map;
 
-	public DepInjector(String xmlResource) {
+	public DepInjector(String xmlResource, Object caller) {
 
 		map = new HashMap<String, Object>();
-
-		initIOCContainer(xmlResource);
+		initIOCContainer(xmlResource,caller);
 
 	}
 
-	private void initIOCContainer(String xmlResource) {
+	private void initIOCContainer(String xmlResource,Object caller) {
 
 		prepareObjectsFromXML(xmlResource);
-		AnnotationProcessor processor = new AnnotationProcessor();
+		AnnotationProcessor processor = new AnnotationProcessor(caller);
 		processor.processAnnotaion(map);
+		processor.instantiateAnnotations(map);
 	}
 
 	@Override

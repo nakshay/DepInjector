@@ -7,27 +7,32 @@ import io.github.nakshay.depinjector.annotations.Inject;
 class Consumer  {
 	
 	@Inject
-	AnnotedClass myclass;
+	 AnotherAnnotedClass annotedInstance;
 	
-    public static void main(String ar[])  throws Exception{
-
-        Injector injector = new DepInjector("resources/config.xml");
+	public void test() {
+	
+		// need to pass this reference to get information of all annoted fields
+		
+        Injector injector = new DepInjector("resources/config.xml",this);
 
         MyClass instance= (MyClass)injector.inject("myclass");
 
         instance.printMe();
-        
+        	
         AnnotedClass inst = (AnnotedClass)injector.inject("AnnotedClass");
         inst.printMessage();
         
         
+        // works without getting explicit instance 
         
-        // return already casted object 
-        // to be done 
-
-        // MyClass instance2= injector.inject("myclass",MyClass.class);
-        // instance2.printMe();
-     
+        annotedInstance.printMessage();
+        
+          
+	}
+	
+    public static void main(String ar[])  throws Exception{
+    	
+    	new Consumer().test();
         
     
     }
