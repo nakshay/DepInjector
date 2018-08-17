@@ -11,25 +11,37 @@ API may change in future.
 
 # What is working?
 
-1.Creating instance via Injector#inject('id'), fully qualified class name must be present in config file 
-
-2. direct instantiating members via @Inject annotation
-
+1. Creating instance via Injector#inject('id'), fully qualified class name must be present in config file 
 
 Ex.
 
 `Injector injector = new DepInjector("resources/config.xml");`
+
 `MyClass instance= (MyClass)injector.inject("myclass");`
 
 
 2. Creating instance by using @Instance Annotation and getting the object via  Injector#inject('id'),
 here id must be equal to ClassName (case sensitve), assigning short id is work in progress 
  
- Ex.
+Ex.
 
 `AnnotedClass inst = (AnnotedClass)injector.inject("AnnotedClass");`
-	`inst.printMessage();`
-    
+
+`inst.printMessage();`
+
+
+3. Object instantiation via Annotation 
+
+Ex.
+
+`@Inject`
+
+`AnotherAnnotedClass annotedInstance;`
+
+`annotedInstance.printMessage();`
+
+	 
+  
     
 # To be done.
 
