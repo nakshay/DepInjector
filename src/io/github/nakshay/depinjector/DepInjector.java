@@ -7,19 +7,19 @@ public final class DepInjector implements Injector {
 	HashMap<String, Object> map;
 
 	public DepInjector(String xmlResource) {
-		
+
 		map = new HashMap<String, Object>();
-		
+
 		initIOCContainer(xmlResource);
-		
+
 	}
-	
+
 	private void initIOCContainer(String xmlResource) {
-		
+
 		prepareObjectsFromXML(xmlResource);
+		AnnotationProcessor processor = new AnnotationProcessor();
+		processor.processAnnotaion(map);
 	}
-	
-	
 
 	@Override
 	public Object inject(String dependencyName) {

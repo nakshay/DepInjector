@@ -35,3 +35,11 @@ class AnnotedClass {
 		System.out.println("This is message from annoted class");
 	}
 }
+
+
+@Instance
+class AnotherAnnotatedClass {
+	public void printMessage() {
+		System.out.println("This is message from another annoted class");
+	}
+}
