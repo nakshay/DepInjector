@@ -1,36 +1,43 @@
 package io.github.nakshay.depinjector;
 
 import java.util.HashMap;
-import java.util.Map;
 
+public final class DepInjector implements Injector {
 
-public class DepInjector implements Injector {
+	HashMap<String, Object> map;
 
-    HashMap<String, Object> map ;
-    public DepInjector(String xmlResource){
-        map = new HashMap<String, Object>();
-        prepareObjects(xmlResource);
-       
-    }
-    
-    @Override
-    public Object inject(String dependencyName){
-        try{
-            return Class.forName(map.get(dependencyName).toString()).newInstance();
-        }
-        catch(Exception ex) {
-            ex.printStackTrace();
-            return null;
-        }
-    }
+	public DepInjector(String xmlResource) {
+		
+		map = new HashMap<String, Object>();
+		
+		initIOCContainer(xmlResource);
+		
+	}
+	
+	private void initIOCContainer(String xmlResource) {
+		
+		prepareObjectsFromXML(xmlResource);
+	}
+	
+	
 
-    @Override
-    public Object inject(String dependencyName, Class className) {
+	@Override
+	public Object inject(String dependencyName) {
+		try {
+			return Class.forName(map.get(dependencyName).toString()).newInstance();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
 
+	@Override
+	public Object inject(String dependencyName, Class className) {
 
-    return null;
-    }
-    public void prepareObjects(String xmlResource){
-        ConfigurationReader.readConfig(xmlResource,map);
-    }
+		return null;
+	}
+
+	private void prepareObjectsFromXML(String xmlResource) {
+		ConfigurationReader.readConfig(xmlResource, map);
+	}
 }
