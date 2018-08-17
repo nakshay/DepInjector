@@ -19,7 +19,9 @@ class Consumer  {
         
         AnnotedClass inst = (AnnotedClass)injector.inject("AnnotedClass");
         inst.printMessage();
-
+        
+        
+        
         // return already casted object 
         // to be done 
 

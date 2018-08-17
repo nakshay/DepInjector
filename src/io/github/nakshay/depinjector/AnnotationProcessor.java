@@ -32,7 +32,7 @@ final public class AnnotationProcessor {
 		}
 	}
 	
-	
+
 	
 	// returns Reflection instance to scan annotation
 	//This creates copy of loaders twice, rework required
