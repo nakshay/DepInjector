@@ -11,6 +11,7 @@ API may change in future.
 # What is working?
 
 1.Creating instance via Injector#inject('id'), fully qualified class name must be present in config file 
+2. direct instantiating members via @Inject annotation
 
 
 Ex.
@@ -30,8 +31,8 @@ here id must be equal to ClassName (case sensitve), assigning short id is work i
     
 # To be done.
 
-1. direct instantiating members via @Inject annotation
-2. getting instance by passing class type to inject method to remove parsing step.(not a priority currently)
+
+1. getting instance by passing class type to inject method to remove parsing step.(not a priority currently)
 
 `injector.inject("myclass", MyClass.class);`
 
