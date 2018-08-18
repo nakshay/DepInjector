@@ -9,16 +9,15 @@ public final class DepInjector implements Injector {
 	public DepInjector(String xmlResource, Object caller) {
 
 		map = new HashMap<String, Object>();
-		initIOCContainer(xmlResource,caller);
+		initIOCContainer(xmlResource, caller);
 
 	}
 
-	private void initIOCContainer(String xmlResource,Object caller) {
+	private void initIOCContainer(String xmlResource, Object caller) {
 
 		prepareObjectsFromXML(xmlResource);
-		AnnotationProcessor processor = new AnnotationProcessor(caller);
-		processor.processAnnotaion(map);
-		processor.instantiateAnnotations(map);
+		AnnotationProcessor processor = new AnnotationProcessor(map, caller);
+		processor.processAnnotaion();
 	}
 
 	@Override
