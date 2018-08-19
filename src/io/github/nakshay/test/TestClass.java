@@ -23,7 +23,6 @@ public class TestClass {
 	@Before
 	public void init() {
 		injector = new DepInjector("resources/config.xml", this);
-
 	}
 
 	@After
@@ -46,17 +45,15 @@ public class TestClass {
 
 		AnnotedClass inst = (AnnotedClass) injector.inject("AnnotedClass");
 		assertTrue(inst instanceof AnnotedClass && inst != null);
-
 		// print message
 		inst.printMessage();
-
 	}
+
 
 	@Test
 	public void testByOnlyAnnotation() {
 		assertTrue(annotedInstance instanceof AnotherAnnotedClass && annotedInstance != null);
-
-		// print message
+		// does not required injector.inject method to create instance
 		annotedInstance.printMessage();
 
 	}
